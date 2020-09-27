@@ -15,8 +15,10 @@ public class AutoVoteMy {
             //https://npm.taobao.org/mirrors/chromedriver/  这个网址可以查看谷歌浏览器对应的chromedriver
             System.setProperty("webdriver.chrome.driver", "D:\\tools\\Vote\\chromedriver.exe");
             WebDriver driver = new ChromeDriver();
-//        System.setProperty("webdriver.gecko.driver", "D:\\tools\\Vote\\geckodriver.exe");
-//         WebDriver driver = new FirefoxDriver();
+            //火狐浏览器更改了默认安装地址必须配置,否则会报错Cannot find firefox binary in PATH. Make sure firefox is installed
+           /* System.setProperty("webdriver.firefox.bin", "D:\\installSoftware\\firefox\\firefox.exe");
+            System.setProperty("webdriver.gecko.driver", "D:\\tools\\Vote\\geckodriver.exe");
+            WebDriver driver = new FirefoxDriver();*/
             driver.manage().window().maximize();
             driver.manage().window().setPosition(new Point(100, 50));
             driver.manage().deleteAllCookies();
@@ -31,8 +33,7 @@ public class AutoVoteMy {
 
             Thread.sleep(5000);
             //投票
-            driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/form/div[5]/div[1]/button")).click();
-            driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div/div[3]/a/div")).submit();
+            driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/form/div[5]/div[1]/button")).submit();
 
             Thread.sleep(2000);
             driver.quit();
